@@ -23,8 +23,21 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Nomina", "Index", "Nomina")</li>
+                    <li>@Html.ActionLink("Empleados", "Index", "Empleados")</li>
+                    <li>@Html.ActionLink("Cargos", "Index", "Cargos")</li>
+                    <li class="btn dropdown-menu">
+                        @Html.ActionLink("Control de Pagos", "Index", "Control_Pagos")
+                                        
+                                            <a class="dropdown-item" href="#">Link 1</a>
+                                            <a class="dropdown-item" href="#">Link 2</a>
+                                            <a class="dropdown-item-text" href="#">Text Link</a>
+                                            <span class="dropdown-item-text">Just Text</span>
+                                        
+                    </li>
+                    <li>@Html.ActionLink("Parafiscales", "Index", "Parafiscales")</li>
+                    
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Empleados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar Empleado", "Create")
 </p>
 <table class="table">
     <tr>
@@ -22,13 +22,13 @@
             @Html.DisplayNameFor(model => model.Correo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefono)
+            <span>Teléfono</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tipo_Documento)
+            <span>Tipo de Documento</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Numero_Documento)
+            <span>Número de Documento</span>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Estado)
@@ -37,7 +37,7 @@
             @Html.DisplayNameFor(model => model.Cargo.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Horario.Tipo_Horario)
+            <span>Tipo de Horario</span>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Tipo_vinculacion.Descripcion)
