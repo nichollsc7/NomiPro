@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Nomipro.ModelDB.HExtraxEmpleado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Horas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horas_Extras.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Horas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horas_Extras.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_HEXE }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_HEXE }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_HEXE })
+        </td>
+    </tr>
+}
+
+</table>

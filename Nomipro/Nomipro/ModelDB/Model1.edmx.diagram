@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8893d1c0f4b24c59b1243db5a9f517e5" Name="Diagram1">
+        <EntityTypeShape EntityType="NomiproModel.Cargo" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.Control_Pago" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.Empleado" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.HExtraxEmpleado" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.Horario" Width="1.5" PointX="0.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.Horas_Extras" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.Nomina" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.Parafiscale" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.ParaxEmple" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NomiproModel.Tipo_vinculacion" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="NomiproModel.FK__Empleados__ID_Ca__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__Nomina__ID_Cargo__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__Control_P__ID_Em__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__Nomina__ID_Contr__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__Empleados__ID_Ho__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__Empleados__ID_Vi__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__HExtraxEm__ID_Em__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__Nomina__ID_Emple__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__ParaxEmpl__ID_Em__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__HExtraxEm__ID_HE__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="NomiproModel.FK__ParaxEmpl__ID_Pa__37A5467C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

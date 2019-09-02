@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Nomipro.ModelDB.ParaxEmple>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parafiscale.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parafiscale.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_PAEM }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_PAEM }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_PAEM })
+        </td>
+    </tr>
+}
+
+</table>

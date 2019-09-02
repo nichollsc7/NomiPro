@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NomiproModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="ID_Cargo" />
+          </Key>
+          <Property Name="ID_Cargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="varchar" MaxLength="45" />
+          <Property Name="Valor_Cargo" Type="int" />
+        </EntityType>
+        <EntityType Name="Control_Pago">
+          <Key>
+            <PropertyRef Name="ID_Control_Pago" />
+          </Key>
+          <Property Name="ID_Control_Pago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EmpleCP" Type="int" />
+          <Property Name="Valor_Horas_Extras" Type="int" />
+          <Property Name="Valor_Parafiscal" Type="int" />
+          <Property Name="Mes" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="ID_Emple" />
+          </Key>
+          <Property Name="ID_Emple" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" />
+          <Property Name="Apellido" Type="varchar" MaxLength="45" />
+          <Property Name="Correo" Type="varchar" MaxLength="45" />
+          <Property Name="Telefono" Type="int" />
+          <Property Name="Tipo_Documento" Type="varchar" MaxLength="45" />
+          <Property Name="Numero_Documento" Type="int" />
+          <Property Name="ID_Cargo" Type="int" />
+          <Property Name="ID_Vinculacion" Type="int" />
+          <Property Name="ID_Horario" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="HExtraxEmpleado">
+          <Key>
+            <PropertyRef Name="ID_HEXE" />
+          </Key>
+          <Property Name="ID_HEXE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Emple" Type="int" />
+          <Property Name="ID_HExtras" Type="int" />
+          <Property Name="Numero_Horas" Type="int" />
+          <Property Name="Mes" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="ID_Horario" />
+          </Key>
+          <Property Name="ID_Horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_Horario" Type="varchar" MaxLength="45" />
+          <Property Name="Hora_Trabajo" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Horas_Extras">
+          <Key>
+            <PropertyRef Name="ID_Hextras" />
+          </Key>
+          <Property Name="ID_Hextras" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" />
+          <Property Name="Valor" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="ID_Nomina" />
+          </Key>
+          <Property Name="ID_Nomina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EmpleN" Type="int" />
+          <Property Name="ID_CargoN" Type="int" />
+          <Property Name="ID_Control_PagoN" Type="int" />
+          <Property Name="Mes" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="varchar" MaxLength="45" />
+          <Property Name="Subtotal" Type="int" />
+          <Property Name="Total" Type="int" />
+        </EntityType>
+        <EntityType Name="Parafiscales">
+          <Key>
+            <PropertyRef Name="ID_Parafiscales" />
+          </Key>
+          <Property Name="ID_Parafiscales" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" />
+          <Property Name="Valor" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="ParaxEmple">
+          <Key>
+            <PropertyRef Name="ID_PAEM" />
+          </Key>
+          <Property Name="ID_PAEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Parafiscales" Type="int" />
+          <Property Name="ID_EmpleP" Type="int" />
+          <Property Name="Mes" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Tipo_vinculacion">
+          <Key>
+            <PropertyRef Name="ID_vinculacion" />
+          </Key>
+          <Property Name="ID_vinculacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="45" />
+          <Property Name="Estado" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="FK__Control_P__ID_Em__398D8EEE">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Control_Pago" Type="Self.Control_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="Control_Pago">
+              <PropertyRef Name="ID_EmpleCP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__ID_Ca__34C8D9D1">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="ID_Cargo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="ID_Cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__ID_Ho__36B12243">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="ID_Horario" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="ID_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__ID_Vi__35BCFE0A">
+          <End Role="Tipo_vinculacion" Type="Self.Tipo_vinculacion" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_vinculacion">
+              <PropertyRef Name="ID_vinculacion" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="ID_Vinculacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HExtraxEm__ID_Em__3A81B327">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="HExtraxEmpleado" Type="Self.HExtraxEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="HExtraxEmpleado">
+              <PropertyRef Name="ID_Emple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HExtraxEm__ID_HE__3B75D760">
+          <End Role="Horas_Extras" Type="Self.Horas_Extras" Multiplicity="0..1" />
+          <End Role="HExtraxEmpleado" Type="Self.HExtraxEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horas_Extras">
+              <PropertyRef Name="ID_Hextras" />
+            </Principal>
+            <Dependent Role="HExtraxEmpleado">
+              <PropertyRef Name="ID_HExtras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nomina__ID_Cargo__3D5E1FD2">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="0..1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="ID_Cargo" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="ID_CargoN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nomina__ID_Contr__3E52440B">
+          <End Role="Control_Pago" Type="Self.Control_Pago" Multiplicity="0..1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Control_Pago">
+              <PropertyRef Name="ID_Control_Pago" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="ID_Control_PagoN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nomina__ID_Emple__3C69FB99">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="ID_EmpleN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ParaxEmpl__ID_Em__38996AB5">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="ParaxEmple" Type="Self.ParaxEmple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="ParaxEmple">
+              <PropertyRef Name="ID_EmpleP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ParaxEmpl__ID_Pa__37A5467C">
+          <End Role="Parafiscales" Type="Self.Parafiscales" Multiplicity="0..1" />
+          <End Role="ParaxEmple" Type="Self.ParaxEmple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parafiscales">
+              <PropertyRef Name="ID_Parafiscales" />
+            </Principal>
+            <Dependent Role="ParaxEmple">
+              <PropertyRef Name="ID_Parafiscales" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NomiproModelStoreContainer">
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Control_Pago" EntityType="Self.Control_Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HExtraxEmpleado" EntityType="Self.HExtraxEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horas_Extras" EntityType="Self.Horas_Extras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomina" EntityType="Self.Nomina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parafiscales" EntityType="Self.Parafiscales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParaxEmple" EntityType="Self.ParaxEmple" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_vinculacion" EntityType="Self.Tipo_vinculacion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Control_P__ID_Em__398D8EEE" Association="Self.FK__Control_P__ID_Em__398D8EEE">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Control_Pago" EntitySet="Control_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__ID_Ca__34C8D9D1" Association="Self.FK__Empleados__ID_Ca__34C8D9D1">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__ID_Ho__36B12243" Association="Self.FK__Empleados__ID_Ho__36B12243">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__ID_Vi__35BCFE0A" Association="Self.FK__Empleados__ID_Vi__35BCFE0A">
+            <End Role="Tipo_vinculacion" EntitySet="Tipo_vinculacion" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HExtraxEm__ID_Em__3A81B327" Association="Self.FK__HExtraxEm__ID_Em__3A81B327">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="HExtraxEmpleado" EntitySet="HExtraxEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HExtraxEm__ID_HE__3B75D760" Association="Self.FK__HExtraxEm__ID_HE__3B75D760">
+            <End Role="Horas_Extras" EntitySet="Horas_Extras" />
+            <End Role="HExtraxEmpleado" EntitySet="HExtraxEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nomina__ID_Cargo__3D5E1FD2" Association="Self.FK__Nomina__ID_Cargo__3D5E1FD2">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nomina__ID_Contr__3E52440B" Association="Self.FK__Nomina__ID_Contr__3E52440B">
+            <End Role="Control_Pago" EntitySet="Control_Pago" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nomina__ID_Emple__3C69FB99" Association="Self.FK__Nomina__ID_Emple__3C69FB99">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ParaxEmpl__ID_Em__38996AB5" Association="Self.FK__ParaxEmpl__ID_Em__38996AB5">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="ParaxEmple" EntitySet="ParaxEmple" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ParaxEmpl__ID_Pa__37A5467C" Association="Self.FK__ParaxEmpl__ID_Pa__37A5467C">
+            <End Role="Parafiscales" EntitySet="Parafiscales" />
+            <End Role="ParaxEmple" EntitySet="ParaxEmple" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NomiproModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="ID_Cargo" />
+          </Key>
+          <Property Name="ID_Cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Valor_Cargo" Type="Int32" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Empleados__ID_Ca__34C8D9D1" FromRole="Cargos" ToRole="Empleados" />
+          <NavigationProperty Name="Nominas" Relationship="Self.FK__Nomina__ID_Cargo__3D5E1FD2" FromRole="Cargos" ToRole="Nomina" />
+        </EntityType>
+        <EntityType Name="Control_Pago">
+          <Key>
+            <PropertyRef Name="ID_Control_Pago" />
+          </Key>
+          <Property Name="ID_Control_Pago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EmpleCP" Type="Int32" />
+          <Property Name="Valor_Horas_Extras" Type="Int32" />
+          <Property Name="Valor_Parafiscal" Type="Int32" />
+          <Property Name="Mes" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Control_P__ID_Em__398D8EEE" FromRole="Control_Pago" ToRole="Empleados" />
+          <NavigationProperty Name="Nominas" Relationship="Self.FK__Nomina__ID_Contr__3E52440B" FromRole="Control_Pago" ToRole="Nomina" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="ID_Emple" />
+          </Key>
+          <Property Name="ID_Emple" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="Int32" />
+          <Property Name="Tipo_Documento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_Documento" Type="Int32" />
+          <Property Name="ID_Cargo" Type="Int32" />
+          <Property Name="ID_Vinculacion" Type="Int32" />
+          <Property Name="ID_Horario" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cargo" Relationship="Self.FK__Empleados__ID_Ca__34C8D9D1" FromRole="Empleados" ToRole="Cargos" />
+          <NavigationProperty Name="Control_Pago" Relationship="Self.FK__Control_P__ID_Em__398D8EEE" FromRole="Empleados" ToRole="Control_Pago" />
+          <NavigationProperty Name="Horario" Relationship="Self.FK__Empleados__ID_Ho__36B12243" FromRole="Empleados" ToRole="Horario" />
+          <NavigationProperty Name="Tipo_vinculacion" Relationship="Self.FK__Empleados__ID_Vi__35BCFE0A" FromRole="Empleados" ToRole="Tipo_vinculacion" />
+          <NavigationProperty Name="HExtraxEmpleadoes" Relationship="Self.FK__HExtraxEm__ID_Em__3A81B327" FromRole="Empleados" ToRole="HExtraxEmpleado" />
+          <NavigationProperty Name="Nominas" Relationship="Self.FK__Nomina__ID_Emple__3C69FB99" FromRole="Empleados" ToRole="Nomina" />
+          <NavigationProperty Name="ParaxEmples" Relationship="Self.FK__ParaxEmpl__ID_Em__38996AB5" FromRole="Empleados" ToRole="ParaxEmple" />
+        </EntityType>
+        <EntityType Name="HExtraxEmpleado">
+          <Key>
+            <PropertyRef Name="ID_HEXE" />
+          </Key>
+          <Property Name="ID_HEXE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Emple" Type="Int32" />
+          <Property Name="ID_HExtras" Type="Int32" />
+          <Property Name="Numero_Horas" Type="Int32" />
+          <Property Name="Mes" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__HExtraxEm__ID_Em__3A81B327" FromRole="HExtraxEmpleado" ToRole="Empleados" />
+          <NavigationProperty Name="Horas_Extras" Relationship="Self.FK__HExtraxEm__ID_HE__3B75D760" FromRole="HExtraxEmpleado" ToRole="Horas_Extras" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="ID_Horario" />
+          </Key>
+          <Property Name="ID_Horario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Horario" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Hora_Trabajo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Empleados__ID_Ho__36B12243" FromRole="Horario" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Horas_Extras">
+          <Key>
+            <PropertyRef Name="ID_Hextras" />
+          </Key>
+          <Property Name="ID_Hextras" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HExtraxEmpleadoes" Relationship="Self.FK__HExtraxEm__ID_HE__3B75D760" FromRole="Horas_Extras" ToRole="HExtraxEmpleado" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="ID_Nomina" />
+          </Key>
+          <Property Name="ID_Nomina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EmpleN" Type="Int32" />
+          <Property Name="ID_CargoN" Type="Int32" />
+          <Property Name="ID_Control_PagoN" Type="Int32" />
+          <Property Name="Mes" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Subtotal" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+          <NavigationProperty Name="Cargo" Relationship="Self.FK__Nomina__ID_Cargo__3D5E1FD2" FromRole="Nomina" ToRole="Cargos" />
+          <NavigationProperty Name="Control_Pago" Relationship="Self.FK__Nomina__ID_Contr__3E52440B" FromRole="Nomina" ToRole="Control_Pago" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Nomina__ID_Emple__3C69FB99" FromRole="Nomina" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Parafiscale">
+          <Key>
+            <PropertyRef Name="ID_Parafiscales" />
+          </Key>
+          <Property Name="ID_Parafiscales" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ParaxEmples" Relationship="Self.FK__ParaxEmpl__ID_Pa__37A5467C" FromRole="Parafiscales" ToRole="ParaxEmple" />
+        </EntityType>
+        <EntityType Name="ParaxEmple">
+          <Key>
+            <PropertyRef Name="ID_PAEM" />
+          </Key>
+          <Property Name="ID_PAEM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Parafiscales" Type="Int32" />
+          <Property Name="ID_EmpleP" Type="Int32" />
+          <Property Name="Mes" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__ParaxEmpl__ID_Em__38996AB5" FromRole="ParaxEmple" ToRole="Empleados" />
+          <NavigationProperty Name="Parafiscale" Relationship="Self.FK__ParaxEmpl__ID_Pa__37A5467C" FromRole="ParaxEmple" ToRole="Parafiscales" />
+        </EntityType>
+        <EntityType Name="Tipo_vinculacion">
+          <Key>
+            <PropertyRef Name="ID_vinculacion" />
+          </Key>
+          <Property Name="ID_vinculacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Empleados__ID_Vi__35BCFE0A" FromRole="Tipo_vinculacion" ToRole="Empleados" />
+        </EntityType>
+        <Association Name="FK__Empleados__ID_Ca__34C8D9D1">
+          <End Role="Cargos" Type="Self.Cargo" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="ID_Cargo" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="ID_Cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nomina__ID_Cargo__3D5E1FD2">
+          <End Role="Cargos" Type="Self.Cargo" Multiplicity="0..1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="ID_Cargo" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="ID_CargoN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Control_P__ID_Em__398D8EEE">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Control_Pago" Type="Self.Control_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="Control_Pago">
+              <PropertyRef Name="ID_EmpleCP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nomina__ID_Contr__3E52440B">
+          <End Role="Control_Pago" Type="Self.Control_Pago" Multiplicity="0..1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Control_Pago">
+              <PropertyRef Name="ID_Control_Pago" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="ID_Control_PagoN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__ID_Ho__36B12243">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="ID_Horario" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="ID_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__ID_Vi__35BCFE0A">
+          <End Role="Tipo_vinculacion" Type="Self.Tipo_vinculacion" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_vinculacion">
+              <PropertyRef Name="ID_vinculacion" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="ID_Vinculacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HExtraxEm__ID_Em__3A81B327">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="HExtraxEmpleado" Type="Self.HExtraxEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="HExtraxEmpleado">
+              <PropertyRef Name="ID_Emple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nomina__ID_Emple__3C69FB99">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="ID_EmpleN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ParaxEmpl__ID_Em__38996AB5">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="ParaxEmple" Type="Self.ParaxEmple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID_Emple" />
+            </Principal>
+            <Dependent Role="ParaxEmple">
+              <PropertyRef Name="ID_EmpleP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HExtraxEm__ID_HE__3B75D760">
+          <End Role="Horas_Extras" Type="Self.Horas_Extras" Multiplicity="0..1" />
+          <End Role="HExtraxEmpleado" Type="Self.HExtraxEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horas_Extras">
+              <PropertyRef Name="ID_Hextras" />
+            </Principal>
+            <Dependent Role="HExtraxEmpleado">
+              <PropertyRef Name="ID_HExtras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ParaxEmpl__ID_Pa__37A5467C">
+          <End Role="Parafiscales" Type="Self.Parafiscale" Multiplicity="0..1" />
+          <End Role="ParaxEmple" Type="Self.ParaxEmple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parafiscales">
+              <PropertyRef Name="ID_Parafiscales" />
+            </Principal>
+            <Dependent Role="ParaxEmple">
+              <PropertyRef Name="ID_Parafiscales" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NomiproEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cargos" EntityType="Self.Cargo" />
+          <EntitySet Name="Control_Pago" EntityType="Self.Control_Pago" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+          <EntitySet Name="HExtraxEmpleadoes" EntityType="Self.HExtraxEmpleado" />
+          <EntitySet Name="Horarios" EntityType="Self.Horario" />
+          <EntitySet Name="Horas_Extras" EntityType="Self.Horas_Extras" />
+          <EntitySet Name="Nominas" EntityType="Self.Nomina" />
+          <EntitySet Name="Parafiscales" EntityType="Self.Parafiscale" />
+          <EntitySet Name="ParaxEmples" EntityType="Self.ParaxEmple" />
+          <EntitySet Name="Tipo_vinculacion" EntityType="Self.Tipo_vinculacion" />
+          <AssociationSet Name="FK__Empleados__ID_Ca__34C8D9D1" Association="Self.FK__Empleados__ID_Ca__34C8D9D1">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nomina__ID_Cargo__3D5E1FD2" Association="Self.FK__Nomina__ID_Cargo__3D5E1FD2">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Nomina" EntitySet="Nominas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Control_P__ID_Em__398D8EEE" Association="Self.FK__Control_P__ID_Em__398D8EEE">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Control_Pago" EntitySet="Control_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nomina__ID_Contr__3E52440B" Association="Self.FK__Nomina__ID_Contr__3E52440B">
+            <End Role="Control_Pago" EntitySet="Control_Pago" />
+            <End Role="Nomina" EntitySet="Nominas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__ID_Ho__36B12243" Association="Self.FK__Empleados__ID_Ho__36B12243">
+            <End Role="Horario" EntitySet="Horarios" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__ID_Vi__35BCFE0A" Association="Self.FK__Empleados__ID_Vi__35BCFE0A">
+            <End Role="Tipo_vinculacion" EntitySet="Tipo_vinculacion" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HExtraxEm__ID_Em__3A81B327" Association="Self.FK__HExtraxEm__ID_Em__3A81B327">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="HExtraxEmpleado" EntitySet="HExtraxEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nomina__ID_Emple__3C69FB99" Association="Self.FK__Nomina__ID_Emple__3C69FB99">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Nomina" EntitySet="Nominas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ParaxEmpl__ID_Em__38996AB5" Association="Self.FK__ParaxEmpl__ID_Em__38996AB5">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="ParaxEmple" EntitySet="ParaxEmples" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HExtraxEm__ID_HE__3B75D760" Association="Self.FK__HExtraxEm__ID_HE__3B75D760">
+            <End Role="Horas_Extras" EntitySet="Horas_Extras" />
+            <End Role="HExtraxEmpleado" EntitySet="HExtraxEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ParaxEmpl__ID_Pa__37A5467C" Association="Self.FK__ParaxEmpl__ID_Pa__37A5467C">
+            <End Role="Parafiscales" EntitySet="Parafiscales" />
+            <End Role="ParaxEmple" EntitySet="ParaxEmples" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NomiproModelStoreContainer" CdmEntityContainer="NomiproEntities">
+          <EntitySetMapping Name="Cargos">
+            <EntityTypeMapping TypeName="NomiproModel.Cargo">
+              <MappingFragment StoreEntitySet="Cargos">
+                <ScalarProperty Name="ID_Cargo" ColumnName="ID_Cargo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Valor_Cargo" ColumnName="Valor_Cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Control_Pago">
+            <EntityTypeMapping TypeName="NomiproModel.Control_Pago">
+              <MappingFragment StoreEntitySet="Control_Pago">
+                <ScalarProperty Name="ID_Control_Pago" ColumnName="ID_Control_Pago" />
+                <ScalarProperty Name="ID_EmpleCP" ColumnName="ID_EmpleCP" />
+                <ScalarProperty Name="Valor_Horas_Extras" ColumnName="Valor_Horas_Extras" />
+                <ScalarProperty Name="Valor_Parafiscal" ColumnName="Valor_Parafiscal" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="NomiproModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="ID_Emple" ColumnName="ID_Emple" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Tipo_Documento" ColumnName="Tipo_Documento" />
+                <ScalarProperty Name="Numero_Documento" ColumnName="Numero_Documento" />
+                <ScalarProperty Name="ID_Cargo" ColumnName="ID_Cargo" />
+                <ScalarProperty Name="ID_Vinculacion" ColumnName="ID_Vinculacion" />
+                <ScalarProperty Name="ID_Horario" ColumnName="ID_Horario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HExtraxEmpleadoes">
+            <EntityTypeMapping TypeName="NomiproModel.HExtraxEmpleado">
+              <MappingFragment StoreEntitySet="HExtraxEmpleado">
+                <ScalarProperty Name="ID_HEXE" ColumnName="ID_HEXE" />
+                <ScalarProperty Name="ID_Emple" ColumnName="ID_Emple" />
+                <ScalarProperty Name="ID_HExtras" ColumnName="ID_HExtras" />
+                <ScalarProperty Name="Numero_Horas" ColumnName="Numero_Horas" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horarios">
+            <EntityTypeMapping TypeName="NomiproModel.Horario">
+              <MappingFragment StoreEntitySet="Horario">
+                <ScalarProperty Name="ID_Horario" ColumnName="ID_Horario" />
+                <ScalarProperty Name="Tipo_Horario" ColumnName="Tipo_Horario" />
+                <ScalarProperty Name="Hora_Trabajo" ColumnName="Hora_Trabajo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horas_Extras">
+            <EntityTypeMapping TypeName="NomiproModel.Horas_Extras">
+              <MappingFragment StoreEntitySet="Horas_Extras">
+                <ScalarProperty Name="ID_Hextras" ColumnName="ID_Hextras" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nominas">
+            <EntityTypeMapping TypeName="NomiproModel.Nomina">
+              <MappingFragment StoreEntitySet="Nomina">
+                <ScalarProperty Name="ID_Nomina" ColumnName="ID_Nomina" />
+                <ScalarProperty Name="ID_EmpleN" ColumnName="ID_EmpleN" />
+                <ScalarProperty Name="ID_CargoN" ColumnName="ID_CargoN" />
+                <ScalarProperty Name="ID_Control_PagoN" ColumnName="ID_Control_PagoN" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parafiscales">
+            <EntityTypeMapping TypeName="NomiproModel.Parafiscale">
+              <MappingFragment StoreEntitySet="Parafiscales">
+                <ScalarProperty Name="ID_Parafiscales" ColumnName="ID_Parafiscales" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParaxEmples">
+            <EntityTypeMapping TypeName="NomiproModel.ParaxEmple">
+              <MappingFragment StoreEntitySet="ParaxEmple">
+                <ScalarProperty Name="ID_PAEM" ColumnName="ID_PAEM" />
+                <ScalarProperty Name="ID_Parafiscales" ColumnName="ID_Parafiscales" />
+                <ScalarProperty Name="ID_EmpleP" ColumnName="ID_EmpleP" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_vinculacion">
+            <EntityTypeMapping TypeName="NomiproModel.Tipo_vinculacion">
+              <MappingFragment StoreEntitySet="Tipo_vinculacion">
+                <ScalarProperty Name="ID_vinculacion" ColumnName="ID_vinculacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

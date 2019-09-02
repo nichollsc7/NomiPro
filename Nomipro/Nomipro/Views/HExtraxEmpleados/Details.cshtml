@@ -1,0 +1,51 @@
+﻿@model Nomipro.ModelDB.HExtraxEmpleado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HExtraxEmpleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Horas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Horas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horas_Extras.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horas_Extras.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_HEXE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,51 @@
+﻿@model Nomipro.ModelDB.Control_Pago
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Control_Pago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor_Horas_Extras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor_Horas_Extras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor_Parafiscal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor_Parafiscal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Control_Pago }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
