@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link rel="stylesheet" href="~/Content/style.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
+    <!--Inicio Barra de Navegación-->
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,26 +25,72 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Nomina", "Index", "Nomina")</li>
-                    <li>@Html.ActionLink("Empleados", "Index", "Empleados")</li>
-                    <li>@Html.ActionLink("Cargos", "Index", "Cargos")</li>
-                    <li class="btn dropdown-menu">
-                        @Html.ActionLink("Control de Pagos", "Index", "Control_Pagos")
-                                        
-                                            <a class="dropdown-item" href="#">Link 1</a>
-                                            <a class="dropdown-item" href="#">Link 2</a>
-                                            <a class="dropdown-item-text" href="#">Text Link</a>
-                                            <span class="dropdown-item-text">Just Text</span>
-                                        
+                    <!--Nomina-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Nomina
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="text-center">
+                                <a class="dropdown-item" href="~/Nomina">Consultar Nomina</a>
+                                <br />
+                                <a class="dropdown-item" href="~/Nomina/Create">Agregar Nomina</a>
+                                <br />
+                            </div>
+                        </div>
+                        <!--Empleados-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Empleados
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="text-center">
+                                <a class="dropdown-item" href="~/Empleados">Consultar Empleados</a>
+                                <br />
+                                <a class="dropdown-item" href="~/Empleados/Create">Agregar Empleados</a>
+                                <br />
+                            </div>
+                        </div>
+                    </li>
+                    <!--Cargos-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Cargos
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="text-center">
+                                <a class="dropdown-item" href="~/Cargos">Consultar Cargos</a>
+                                <br />
+                                <a class="dropdown-item" href="~/Cargos/Create">Agregar Cargos</a>
+                                <br />
+                            </div>
+                        </div>
+                    </li>
+                    <!--Control de Pagos-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Control de Pagos
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="text-center">
+                                <a class="dropdown-item" href="~/Control_Pagos">Consultar Control de Pagos</a>
+                                <br />
+                                <a class="dropdown-item" href="~/Control_Pagos/Create">Agregar Control de Pagos</a>
+                                <br />
+                                <a class="dropdown-item" href="~/HExtraxEmpleados">Consultar Horas Extras por Empleado</a>
+                                <br />
+                                <a class="dropdown-item" href="~/HExtraxEmpleados">Consultar Horas Extras por Empleado</a>
+                                <br />
+                            </div>
+                        </div>
                     </li>
                     <li>@Html.ActionLink("Parafiscales", "Index", "Parafiscales")</li>
-                    
-
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+    <!--Fin Barra de Navegación-->
     <div class="container body-content">
         @RenderBody()
         <hr />
