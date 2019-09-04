@@ -20,10 +20,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nomipro", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" >
+                <ul class="nav navbar-nav">
+                    <li>
+                        <img src="~/Content/Imagenes/Logo/Logo-NomiPro2.png" class="iconoRedes" alt="Logo Nomipro" />
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="~/Home"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Nomipro</a>
+                    </li>
                     <li>
                         <a class="dropdown-item" href="~/Home"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Inicio</a>
                     </li>
@@ -35,9 +40,9 @@
                         <div class="dropdown-menu">
                             <div class="text-center">
                                 <br />
-                                <a class="dropdown-item" href="~/Nomina">Consultar Nomina</a>
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Nomina">Consultar Nomina</a>
                                 <hr />
-                                <a class="dropdown-item" href="~/Nomina/Create">Agregar Nomina</a>
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Nomina/Create">Agregar Nomina</a>
                                 <br />
                                 <br />
                             </div>
@@ -87,7 +92,7 @@
                                 <hr />
                                 <a class="dropdown-item" style="color:#6A6E67;" href="~/Control_Pagos/Create">Agregar Control de Pagos</a>
                                 <hr />
-                                <a class="dropdown-item" style="color:#6A6E67;"  href="~/HExtraxEmpleados">Consultar Horas Extras por Empleado</a>
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/HExtraxEmpleados">Consultar Horas Extras por Empleado</a>
                                 <hr />
                                 <a class="dropdown-item" style="color:#6A6E67;" href="~/Tipo_vinculacion">Consultar Tipos de Vinculación</a>
                                 <br />
@@ -112,6 +117,16 @@
                             </div>
                         </div>
                     </li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>
+                            <a class="dropdown-item" href="~/Home"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Nomipro</a>
+                        </li>
+                    }
+                    else
+                    {
+
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -132,19 +147,19 @@
             <!--Redes Sociales-->
                     <div class="text-center">
                         <a href="#" style="color:white;">
-                            <img src="~/Content/Imagenes/Icono-Facebook.png" class="iconoRedes" alt="Nomipro Facebook" />
+                            <img src="~/Content/Imagenes/Redes/Icono-Facebook.png" class="iconoRedes" alt="Nomipro Facebook" />
                         </a>
                         <a href="#" style="color:white;">
-                            <img src="~/Content/Imagenes/Icono-Twitter.png" class="iconoRedes" alt="Nomipro Twitter" />
+                            <img src="~/Content/Imagenes/Redes/Icono-Twitter.png" class="iconoRedes" alt="Nomipro Twitter" />
                         </a>
                         <a href="#" style="color:white;">
-                            <img src="~/Content/Imagenes/Icono-Instagram.png" class="iconoRedes" alt="Nomipro Instagram" />
+                            <img src="~/Content/Imagenes/Redes/Icono-Instagram.png" class="iconoRedes" alt="Nomipro Instagram" />
                         </a>
                         <a href="#" style="color:white;">
-                            <img border="0" src="~/Content/Imagenes/Icono-Youtube.png" class="iconoRedes" alt="Nomipro Youtube" />
+                            <img src="~/Content/Imagenes/Redes/Icono-Youtube.png" class="iconoRedes" alt="Nomipro Youtube" />
                         </a>
                         <a href="#" style="color:white;">
-                            <img src="~/Content/Imagenes/Icono-Linkedin.png" class="iconoRedes" alt="Nomipro Linkedln" />
+                            <img src="~/Content/Imagenes/Redes/Icono-Linkedin.png" class="iconoRedes" alt="Nomipro Linkedln" />
                         </a>
                     </div>
                
