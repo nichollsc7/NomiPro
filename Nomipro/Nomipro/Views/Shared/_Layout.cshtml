@@ -12,7 +12,7 @@
 </head>
 <body>
     <!--Inicio Barra de Navegación-->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#2c3e50;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,34 +20,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Nomipro", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <ul class="nav navbar-nav" >
+                    <li>
+                        <a class="dropdown-item" href="~/Home"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Inicio</a>
+                    </li>
                     <!--Nomina-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Nomina
+                            <i class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Nomina
                         </a>
                         <div class="dropdown-menu">
                             <div class="text-center">
-                                <a class="dropdown-item" href="~/Nomina">Consultar Nomina</a>
                                 <br />
+                                <a class="dropdown-item" href="~/Nomina">Consultar Nomina</a>
+                                <hr />
                                 <a class="dropdown-item" href="~/Nomina/Create">Agregar Nomina</a>
+                                <br />
                                 <br />
                             </div>
                         </div>
                         <!--Empleados-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Empleados
+                            <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Empleados
                         </a>
                         <div class="dropdown-menu">
                             <div class="text-center">
-                                <a class="dropdown-item" href="~/Empleados">Consultar Empleados</a>
                                 <br />
-                                <a class="dropdown-item" href="~/Empleados/Create">Agregar Empleados</a>
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Empleados">Consultar Empleados</a>
+                                <hr />
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Empleados/Create">Agregar Empleados</a>
+                                <br />
                                 <br />
                             </div>
                         </div>
@@ -55,36 +61,57 @@
                     <!--Cargos-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Cargos
+                            <i class="glyphicon glyphicon-briefcase"></i>&nbsp;&nbsp;Cargos
                         </a>
                         <div class="dropdown-menu">
                             <div class="text-center">
-                                <a class="dropdown-item" href="~/Cargos">Consultar Cargos</a>
                                 <br />
-                                <a class="dropdown-item" href="~/Cargos/Create">Agregar Cargos</a>
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Cargos">Consultar Cargos</a>
+                                <hr />
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Cargos/Create">Agregar Cargos</a>
+                                <br />
                                 <br />
                             </div>
                         </div>
                     </li>
-                    <!--Control de Pagos-->
+                    <!--Control de Pagos, Horas Extras-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Control de Pagos
+                            <i class="glyphicon glyphicon-piggy-bank"></i>
+                            &nbsp;Control de Pagos
                         </a>
                         <div class="dropdown-menu">
                             <div class="text-center">
-                                <a class="dropdown-item" href="~/Control_Pagos">Consultar Control de Pagos</a>
                                 <br />
-                                <a class="dropdown-item" href="~/Control_Pagos/Create">Agregar Control de Pagos</a>
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Control_Pagos">Consultar Control de Pagos</a>
+                                <hr />
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Control_Pagos/Create">Agregar Control de Pagos</a>
+                                <hr />
+                                <a class="dropdown-item" style="color:#6A6E67;"  href="~/HExtraxEmpleados">Consultar Horas Extras por Empleado</a>
+                                <hr />
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Tipo_vinculacion">Consultar Tipos de Vinculación</a>
                                 <br />
-                                <a class="dropdown-item" href="~/HExtraxEmpleados">Consultar Horas Extras por Empleado</a>
-                                <br />
-                                <a class="dropdown-item" href="~/HExtraxEmpleados">Consultar Horas Extras por Empleado</a>
                                 <br />
                             </div>
                         </div>
                     </li>
-                    <li>@Html.ActionLink("Parafiscales", "Index", "Parafiscales")</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;&nbsp;Parafiscales
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="text-center">
+                                <br />
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Parafiscales">Consultar Parafiscales</a>
+                                <hr />
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/Parafiscales/Create">Agregar Parafiscales</a>
+                                <hr />
+                                <a class="dropdown-item" style="color:#6A6E67;" href="~/ParaxEmple">Consultar Control Parafiscal por Empleado</a>
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -95,9 +122,37 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <!--Medios de Contacto Principal-->
+            <br />
+            <div class="text-center">
+                <p>Dir: Crr. 56a # 45 - 71 Medellín - Colombia</p>
+                <p>Teléfono:1-8000-567940</p>
+            </div>
+            <br />
+            <!--Redes Sociales-->
+                    <div class="text-center">
+                        <a href="#" style="color:white;">
+                            <img src="~/Content/Imagenes/Icono-Facebook.png" class="iconoRedes" alt="Nomipro Facebook" />
+                        </a>
+                        <a href="#" style="color:white;">
+                            <img src="~/Content/Imagenes/Icono-Twitter.png" class="iconoRedes" alt="Nomipro Twitter" />
+                        </a>
+                        <a href="#" style="color:white;">
+                            <img src="~/Content/Imagenes/Icono-Instagram.png" class="iconoRedes" alt="Nomipro Instagram" />
+                        </a>
+                        <a href="#" style="color:white;">
+                            <img border="0" src="~/Content/Imagenes/Icono-Youtube.png" class="iconoRedes" alt="Nomipro Youtube" />
+                        </a>
+                        <a href="#" style="color:white;">
+                            <img src="~/Content/Imagenes/Icono-Linkedin.png" class="iconoRedes" alt="Nomipro Linkedln" />
+                        </a>
+                    </div>
+               
+            <br />
+            <hr />
+            <p class="text-center">&copy; @DateTime.Now.Year Nomipro. Todos los derechos reservados.</p>
         </footer>
-    </div>
+  </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
